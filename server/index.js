@@ -9,6 +9,7 @@ import mediaRoute from "./routes/media.route.js";
 import purchaseRoute from "./routes/purchaseCourse.route.js";
 import courseProgressRoute from "./routes/courseProgress.route.js";
 import path from "path";
+import { fileURLToPath } from "url";
 
 dotenv.config({});
 // connect to database
@@ -16,11 +17,13 @@ connectDB();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.resolve();
 
 // default middleware
 app.use(express.json());
 app.use(cookieParser());
+
 
 app.use(cors({
     origin:"https://lms-2-uph1.onrender.com",
